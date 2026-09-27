@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitBuddy – AI Fitness Plan Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span>🔥</span> FitBuddy</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#plan">My Plan</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#admin">Users</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">AI-POWERED FITNESS PLANNER</span>
+        <h1>Your workout.<br><span>Your goals.</span> Your plan.</h1>
+        <p>Generate a personalized 7-day fitness plan and a practical nutrition tip based on your fitness goal and workout intensity.</p>
+        <a class="primary-btn" href="#generator">Create My Plan →</a>
+      </div>
+      <div class="hero-card">
+        <div class="pulse">✦</div>
+        <h3>Personalized by AI</h3>
+        <p>Workout • Recovery • Nutrition</p>
+        <div class="mini-stats"><b>7</b><span>days</span><b>AI</b><span>powered</span></div>
+      </div>
+    </section>
+
+    <section id="generator" class="panel">
+      <div class="section-heading">
+        <span class="eyebrow">01 · YOUR PROFILE</span>
+        <h2>Tell us about yourself</h2>
+        <p>Enter your details and choose your preferred intensity.</p>
+      </div>
+
+      <form id="planForm" class="form-grid">
+        <label>Name<input id="name" required placeholder="Your name"></label>
+        <label>User ID<input id="userId" required placeholder="e.g. FB001"></label>
+        <label>Age<input id="age" required type="number" min="13" max="100" placeholder="20"></label>
+        <label>Weight (kg)<input id="weight" required type="number" min="20" max="300" step="0.1" placeholder="60"></label>
+        <label>Fitness Goal
+          <select id="goal">
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Muscle Gain">Muscle Gain</option>
+            <option value="General Wellness">General Wellness</option>
+            <option value="Flexibility">Flexibility</option>
+          </select>
+        </label>
+        <label>Workout Intensity
+          <select id="intensity">
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
+        <button class="primary-btn full" type="submit">⚡ Generate 7-Day Plan</button>
+      </form>
+      <p class="disclaimer">Demo interface: generated plans are illustrative and are not medical advice.</p>
+    </section>
+
+    <section id="plan" class="panel hidden">
+      <div class="section-heading">
+        <span class="eyebrow">02 · YOUR PERSONALIZED PLAN</span>
+        <h2 id="welcome">Your plan</h2>
+        <p id="profileSummary"></p>
+      </div>
+      <div id="days" class="days"></div>
+      <div class="tip-card">
+        <div class="tip-icon">🥗</div>
+        <div><span class="eyebrow">NUTRITION / RECOVERY TIP</span><p id="tip"></p></div>
+      </div>
+      <button class="secondary-btn" onclick="document.querySelector('#feedback').scrollIntoView({behavior:'smooth'})">Refine my plan</button>
+    </section>
+
+    <section id="feedback" class="panel hidden">
+      <div class="section-heading">
+        <span class="eyebrow">03 · FEEDBACK LOOP</span>
+        <h2>Make your plan fit you better</h2>
+        <p>Tell FitBuddy what you want to change.</p>
+      </div>
+      <form id="feedbackForm">
+        <textarea id="feedbackText" required placeholder="Example: Add more cardio, reduce leg exercises, include more rest days..."></textarea>
+        <button class="primary-btn" type="submit">✨ Update My Plan</button>
+      </form>
+      <div id="updateMessage" class="success hidden">✓ Your plan has been updated based on your feedback!</div>
+    </section>
+
+    <section id="admin" class="panel">
+      <div class="section-heading">
+        <span class="eyebrow">04 · ADMIN VIEW</span>
+        <h2>Saved users & plans</h2>
+        <p>Demo dashboard showing records saved in this browser.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>User ID</th><th>Name</th><th>Age</th><th>Weight</th><th>Goal</th><th>Intensity</th></tr></thead>
+          <tbody id="usersTable"></tbody>
+        </table>
+      </div>
+      <p id="emptyUsers" class="empty">No users saved yet.</p>
+    </section>
+  </main>
+
+  <footer>FitBuddy · AI Fitness Plan Generator · Demo Website</footer>
+  <script src="script.js"></script>
+</body>
+</html>
